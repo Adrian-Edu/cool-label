@@ -26,14 +26,13 @@ function App() {
 
     console.log(submit)
     
-    e.preventDefault()
-
     if(dataInput.nume === " " || dataInput.prenume === "" || dataInput.email === "")  {
       return setErrorMessage(true)
     } else if (dataInput.nume !== " " || dataInput.prenume !== "" || dataInput.email !== "")  {
       setDataMessageSubmit(true)
     }
 
+    e.preventDefault()
    }
 
   return (
