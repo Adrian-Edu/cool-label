@@ -10,6 +10,7 @@ function App() {
   const [errorPrenume, setErrorPrenume] = useState(false)
   const [errorEmail, setErrorEmail] = useState(false)
   const [submit, setSubmit] = useState("")
+  const [showDataSubmit, setShowDataSubmit] = useState(false)
 
   const handleName = (e) => {
    setDataInput({...dataInput, nume:e.target.value}) 
@@ -28,9 +29,7 @@ function App() {
 
     setSubmit(dataInput.nume + " " + dataInput.prenume + " " + dataInput.email)
 
-    console.log(submit)
-    
-
+      
       if (dataInput.nume === "" && dataInput.prenume === "" && dataInput.email === "")  {
       return setErrorName(true) + setErrorPrenume(true) + setErrorEmail(true) 
     } if (dataInput.nume === "") {
@@ -40,13 +39,12 @@ function App() {
     } else if (dataInput.email === "") {
       return setErrorEmail(true) 
     } else {
-        setDataMessageSubmit(true)
-      }
-
+      setShowDataSubmit(true) || setDataMessageSubmit(true) 
+    }
+    
     setErrorName (false)
     setErrorPrenume (false)
     setErrorEmail (false)
-
    }
 
   return (
@@ -64,7 +62,7 @@ function App() {
 
       { dataMessage ? <div><p> Va multumim pentru inregistrare. </p></div> : null } 
 
-      <div><p>{submit}</p></div>
+      { showDataSubmit ? <div><p>{submit}</p></div> : null } 
       
       </form>
       </header>
