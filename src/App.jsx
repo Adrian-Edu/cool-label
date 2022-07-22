@@ -62,7 +62,7 @@ function App() {
       { errorEmail ? <div> <span>Va rog sa completati adresa de e-mail!</span> </div>: null} 
       <button>Trimite</button>
 
-      { dataMessage ? <div><p> Va multumim pentru inregistrare! </p></div> : null } 
+      { dataMessage ? <div><p> Va multumim pentru inregistrare. </p></div> : null } 
 
       <div><p>{submit}</p></div>
       
