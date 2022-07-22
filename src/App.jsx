@@ -9,7 +9,6 @@ function App() {
   const [errorName, setErrorName] = useState(false)
   const [errorPrenume, setErrorPrenume] = useState(false)
   const [errorEmail, setErrorEmail] = useState(false)
-
   const [submit, setSubmit] = useState("")
 
   const handleName = (e) => {
@@ -31,18 +30,45 @@ function App() {
 
     console.log(submit)
     
-    if (dataInput.nume === " ") {
+
+      if (dataInput.nume === "" && dataInput.prenume === "" && dataInput.email === "")  {
+      return setErrorName(true) + setErrorPrenume(true) + setErrorEmail(true) 
+    } if (dataInput.nume === "") {
+      return setErrorName(true)
+    } else if (dataInput.prenume  === "") {
+      return setErrorPrenume(true)
+    } else if (dataInput.email === "") {
+      return setErrorEmail(true) 
+    } else {
+        setDataMessageSubmit(true)
+      }
+
+
+      /*
+
+    if (dataInput.nume === "") {
       return setErrorName(true)
     } else if (dataInput.prenume  === "") {
       return setErrorPrenume(true)
     } else if (dataInput.email === "") {
       return setErrorEmail(true)
-    } else if (dataInput.nume === " " && dataInput.prenume === "" && dataInput.email === "")  {
-      return setErrorName(true) + setErrorPrenume(true) + setErrorEmail(true)
-    } else if (dataInput.nume != " " && dataInput.prenume != "" && dataInput.email != "")  {
+    } else if (dataInput.nume === "" && dataInput.prenume === "" && dataInput.email === "")  {
+      return setErrorName(true) && setErrorPrenume(true) && setErrorEmail(true)
+    } else {
       setDataMessageSubmit(true)
     }
+    */
  
+    const show = [{nume : submit.nume, prenume : submit.prenume, email : submit.email}]
+   
+    /*
+   
+    console.log(submit.nume)
+    console.log(submit.prenume)
+    console.log(submit.email)
+*/
+
+
     setErrorName (false)
     setErrorPrenume (false)
     setErrorEmail (false)
@@ -69,7 +95,7 @@ function App() {
       { errorPrenume ? <div><span>Va rog sa completati campul prenume!</span> </div> : null } 
       <input type="text" placeholder='E-mail' value={dataInput.email} onChange={handleEmail}></input>
       { errorEmail ? <div> <span>Va rog sa completati adresa de e-mail!</span> </div>: null} 
-      <button>Submit</button>
+      <button>Trimite</button>
 
       { dataMessage ? <div><p> Va multumim pentru inregistrare! </p></div> : null } 
 
