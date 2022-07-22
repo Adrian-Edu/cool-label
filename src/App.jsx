@@ -6,7 +6,10 @@ function App() {
 
   const [dataInput, setDataInput] = useState({nume: "", prenume: "", email: ""})
   const [dataMessage, setDataMessageSubmit] = useState(false)  
-  const [errorMessage, setErrorMessage] = useState(false)
+  const [errorName, setErrorName] = useState(false)
+  const [errorPrenume, setErrorPrenume] = useState(false)
+  const [errorEmail, setErrorEmail] = useState(false)
+
   const [submit, setSubmit] = useState("")
 
   const handleName = (e) => {
@@ -22,17 +25,37 @@ function App() {
    }
 
    const handleSubmit = (e) => {
+    e.preventDefault()
+
     setSubmit(dataInput.nume + " " + dataInput.prenume + " " + dataInput.email)
 
     console.log(submit)
     
+    if (dataInput.nume === " ") {
+      return setErrorName(true)
+    } else if (dataInput.prenume  === "") {
+      return setErrorPrenume(true)
+    } else if (dataInput.email === "") {
+      return setErrorEmail(true)
+    } else if (dataInput.nume === " " && dataInput.prenume === "" && dataInput.email === "")  {
+      return setErrorName(true) + setErrorPrenume(true) + setErrorEmail(true)
+    } else if (dataInput.nume != " " && dataInput.prenume != "" && dataInput.email != "")  {
+      setDataMessageSubmit(true)
+    }
+ 
+    setErrorName (false)
+    setErrorPrenume (false)
+    setErrorEmail (false)
+    
+    /*
     if(dataInput.nume === " " || dataInput.prenume === "" || dataInput.email === "")  {
       return setErrorMessage(true)
     } else if (dataInput.nume !== " " || dataInput.prenume !== "" || dataInput.email !== "")  {
       setDataMessageSubmit(true)
     }
 
-    e.preventDefault()
+*/
+
    }
 
   return (
@@ -41,11 +64,11 @@ function App() {
       <form className='container' onSubmit={handleSubmit} >
 
       <input type="text" placeholder='Nume' value={dataInput.nume} onChange={handleName}></input>
-      { errorMessage ?  <div><span>Va rog sa completati campul nume!</span></div>  : null }
+      { errorName ?  <div><span>Va rog sa completati campul nume!</span></div>  : null }
       <input type="text" placeholder='Prenume' value={dataInput.prenume} onChange={handlePrenume}></input>
-      { errorMessage ? <div><span>Va rog sa completati campul prenume!</span> </div> : null } 
+      { errorPrenume ? <div><span>Va rog sa completati campul prenume!</span> </div> : null } 
       <input type="text" placeholder='E-mail' value={dataInput.email} onChange={handleEmail}></input>
-      { errorMessage ? <div> <span>Va rog sa completati adresa de e-mail!</span> </div>: null} 
+      { errorEmail ? <div> <span>Va rog sa completati adresa de e-mail!</span> </div>: null} 
       <button>Submit</button>
 
       { dataMessage ? <div><p> Va multumim pentru inregistrare! </p></div> : null } 
