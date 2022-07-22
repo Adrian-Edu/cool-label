@@ -43,44 +43,9 @@ function App() {
         setDataMessageSubmit(true)
       }
 
-
-      /*
-
-    if (dataInput.nume === "") {
-      return setErrorName(true)
-    } else if (dataInput.prenume  === "") {
-      return setErrorPrenume(true)
-    } else if (dataInput.email === "") {
-      return setErrorEmail(true)
-    } else if (dataInput.nume === "" && dataInput.prenume === "" && dataInput.email === "")  {
-      return setErrorName(true) && setErrorPrenume(true) && setErrorEmail(true)
-    } else {
-      setDataMessageSubmit(true)
-    }
-    */
- 
-    const show = [{nume : submit.nume, prenume : submit.prenume, email : submit.email}]
-   
-    /*
-   
-    console.log(submit.nume)
-    console.log(submit.prenume)
-    console.log(submit.email)
-*/
-
-
     setErrorName (false)
     setErrorPrenume (false)
     setErrorEmail (false)
-    
-    /*
-    if(dataInput.nume === " " || dataInput.prenume === "" || dataInput.email === "")  {
-      return setErrorMessage(true)
-    } else if (dataInput.nume !== " " || dataInput.prenume !== "" || dataInput.email !== "")  {
-      setDataMessageSubmit(true)
-    }
-
-*/
 
    }
 
