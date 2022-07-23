@@ -14,14 +14,26 @@ function App() {
 
   const handleName = (e) => {
    setDataInput({...dataInput, nume:e.target.value}) 
+   
+   if (dataInput.nume !== " ") {
+    setErrorName(false)
+   }
   }
 
   const handlePrenume = (e) => {
     setDataInput({...dataInput, prenume:e.target.value}) 
+
+    if (dataInput.prenume !== " ") {
+      setErrorPrenume(false)
+     }
    }
 
    const handleEmail = (e) => {
     setDataInput({...dataInput, email:e.target.value}) 
+
+    if (dataInput.email !== " ") {
+      setErrorEmail(false)
+     }
    }
 
    const handleSubmit = (e) => {
@@ -32,7 +44,7 @@ function App() {
       
       if (dataInput.nume === "" && dataInput.prenume === "" && dataInput.email === "")  {
       return setErrorName(true) + setErrorPrenume(true) + setErrorEmail(true) 
-    } if (dataInput.nume === "") {
+    } else if (dataInput.nume === "")  {
       return setErrorName(true)
     } else if (dataInput.prenume  === "") {
       return setErrorPrenume(true)
